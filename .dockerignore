@@ -1,0 +1,13 @@
+node_modules
+dist
+test-results
+playwright-report
+allure-results
+.git
+.gitignore
+.github
+npm-debug.log*
+*.log
+whatif
+
+
