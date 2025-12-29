@@ -13,8 +13,8 @@ Automated E2E testing framework for landing pages using Playwright + TypeScript.
 
 ## Requirements
 
-- Node.js 24+
-- npm 11+
+- [Node.js](https://nodejs.org/) 24+
+- [npm](https://www.npmjs.com/) 11+
 
 ## Quick Start
 
@@ -123,14 +123,14 @@ npm run test:percy       # Percy visual tests
 
 | Tag              | Description            | Count |
 | ---------------- | ---------------------- | ----- |
-| `@smoke`         | Critical path tests    | ~10   |
-| `@validation`    | Input validation tests | ~25   |
+| `@smoke`         | Critical path tests    | 8     |
+| `@validation`    | Input validation tests | 30    |
 | `@a11y`          | Accessibility tests    | 3     |
 | `@percy`         | Percy visual tests     | 4     |
-| `@cross-browser` | Multi-browser tests    | 3     |
-| `@mobile`        | Mobile viewport tests  | 3     |
+| `@cross-browser` | Multi-browser tests    | 1     |
+| `@mobile`        | Mobile viewport tests  | 1     |
 
-Total: **45 tests**
+Total: **47 tests** (including cross-browser executions)
 
 ## Commands
 
@@ -278,14 +278,30 @@ await expectStayOnStep(formPage, formAssertions, FormStep.PHONE);
 
 See [DEFECTS.md](./DEFECTS.md) for details.
 
-## Documentation
+## Project Rationale & Scalability
 
-| Document                                                     | Description                             |
-| ------------------------------------------------------------ | --------------------------------------- |
-| [Scenario Selection](./docs/SCENARIO-SELECTION.md)           | Why these test scenarios were chosen    |
-| [Improvements](./docs/IMPROVEMENTS.md)                       | Scalability & maintainability decisions |
-| [Additional Improvements](./docs/ADDITIONAL-IMPROVEMENTS.md) | Extra enhancements beyond requirements  |
-| [Defects](./DEFECTS.md)                                      | Bugs found during testing               |
+### 1. Scenario Selection
+
+The test suite prioritizes the **conversion funnel** and **data integrity**:
+
+- **Critical Path**: End-to-end form submission is tested to ensure the primary business goal (lead gen) is functional.
+- **Validation**: High-risk inputs (Email, Phone, ZIP) are rigorously tested to prevent "garbage" data from entering the CRM.
+- **Accessibility & Visuals**: We use `@a11y` and `@percy` tags to ensure compliance and UI consistency.
+- _Detailed breakdown: [SCENARIO-SELECTION.md](./docs/SCENARIO-SELECTION.md)_
+
+### 2. Future Scalability (Roadmap)
+
+To support the growth from dozens to 1000+ landing pages, we are implementing:
+
+- **Dynamic Test Engine**: Moving to a metadata-driven approach where test suites are generated on-the-fly from JSON configs.
+- **State Machine Flow Orchestrator**: Defining form branching logic (e.g., different step sequences) directly in the configuration.
+- **API-First Pre-flight Checks**: Using lightweight HTTP probes to verify page availability before launching browser instances, saving CI resources.
+- **Event-Driven CI**: Selective test execution based on `git diff` to keep feedback loops under 5 minutes.
+
+### 3. Additional Improvements
+
+- **AI-Assisted Maintenance**: Using LLMs for self-healing locators and automated test data generation.
+- **Stakeholder Low-Code Tools**: Integration with Google Sheets to allow non-technical users to configure and trigger tests.
 
 ## CI/CD
 
@@ -304,3 +320,7 @@ GitHub Actions workflow (`.github/workflows/playwright.yml`):
 3. Run `npm run lint && npm test`
 4. Commit (husky will run lint-staged)
 5. Open PR
+
+---
+
+© 2025 **Oleks Tech OÜ**. All rights reserved.
