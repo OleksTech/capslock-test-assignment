@@ -15,5 +15,5 @@
     "sourceMap": true
   },
   "include": ["**/*.ts"],
-  "exclude": ["node_modules", "dist", "whatif"]
+  "exclude": ["node_modules", "dist"]
 }

@@ -3,7 +3,6 @@ dist
 test-results
 playwright-report
 allure-results
-whatif
 package-lock.json
 
 

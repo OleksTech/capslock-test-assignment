@@ -13,7 +13,6 @@ export default tseslint.config(
       'dist/**',
       'test-results/**',
       'playwright-report/**',
-      'whatif/**',
       'allure-results/**',
     ],
   },

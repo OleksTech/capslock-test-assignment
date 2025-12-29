@@ -9,7 +9,6 @@ allure-results/
 allure-report/
 *.log
 
-# Keep visual baselines
 !snapshots/
 *.png
 !snapshots/**/*.png
@@ -34,6 +33,4 @@ npm-debug.log*
 # Environment
 .env
 .env.local
-
-whatif/
 
