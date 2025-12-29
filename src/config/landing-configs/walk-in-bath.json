@@ -1,0 +1,26 @@
+{
+  "id": "walk-in-bath",
+  "name": "Walk-In Bath Landing",
+  "path": "/",
+  "baseURL": {
+    "staging": "https://test-qa.capslock.global",
+    "production": "https://capslock.global"
+  },
+  "features": {
+    "hasZipCode": true,
+    "hasInterests": true,
+    "hasPropertyType": true,
+    "hasContactInfo": true,
+    "hasPhone": true
+  },
+  "validation": {
+    "zipCodeLength": 5,
+    "phoneLength": 10,
+    "emailPattern": "^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$"
+  },
+  "copy": {
+    "serviceUnavailableMessage": "Sorry, unfortunately we don't yet install in your area but if you'd like us to notify you when we do please enter your email address below",
+    "thankYouHeading": "Thank You",
+    "formTitle": "How much does it cost to install a walk-in bath"
+  }
+}
